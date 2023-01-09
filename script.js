@@ -7,6 +7,8 @@ let grid = document.querySelector('.grid');
 let randomSelector = document.getElementById('color-random');
 let increasingSelector = document.getElementById('color-increasing');
 let cellsPerRow = document.getElementById('cells-per-row');
+let clearButton = document.getElementById('clear-all');
+let cellsPerRowLabel = document.getElementById('cells-per-row-label');
 
 let fixedColor = {get color() {return colorPicker.value;}}
 let randColor = {get color() {return getRandomColor()}};
@@ -22,9 +24,16 @@ fieldset.addEventListener('change', (e) => {
     }
 })
 
-grid.addEventListener('click', () => drawActivated = !drawActivated);
+grid.addEventListener('click', () => {
+    drawActivated = !drawActivated
+    grid.toggleAttribute('draw');
+});
 
 cellsPerRow.addEventListener('change', () => drawCanva(cellsPerRow.value));
+
+cellsPerRow.addEventListener('input', () => cellsPerRowLabel.textContent = `${cellsPerRow.value} x ${cellsPerRow.value}`);
+
+clearButton.addEventListener('click', () => drawCanva(cellsPerRow.value));
 
 function drawCanva(numOfCellsPerRow) {
     if (grid.children) grid.innerHTML='';
@@ -52,6 +61,7 @@ function drawCanva(numOfCellsPerRow) {
         }
         grid.appendChild(row)
     }
+    cellsPerRowLabel.textContent = `${numOfCellsPerRow} x ${numOfCellsPerRow}`;
 }
 
 // Utils

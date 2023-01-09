@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>etch-a-sketch</title>
     <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Birthstone Bounce' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -13,17 +15,30 @@
     <div class="container">
         <div class="controls">
             <fieldset>
-                <legend>Pick your color:</legend>
-                <input type="color" id="color-picker">
-                <input type="radio" name="color-option" id="color-fixed" checked>
-                <label for="color-fixed">Full color</label>
-                <input type="radio" name="color-option" id="color-increasing">
-                <label for="color-increasing">Increasing color</label>
-                <input type="radio" name="color-option" id="color-random">
-                <label for="color-random">Random color</label>
-                <input type="range" id="cells-per-row" value="100" min="10" max="100">
-                <label for="cells-per-row">Cells per row</label>
+                <div class="flex-section">
+                    <div class="color-pick">
+                        <input type="color" id="color-picker">
+                    </div>
+                    <div class="grid-selector">
+                        <label id="cells-per-row-label" for="cells-per-row"></label>
+                        <input type="range" id="cells-per-row" value="100" min="10" max="100"> 
+                    </div> 
+                </div>
+                <button id="clear-all">Clear all</button>
+                <div class="radio-selection">
+                    <input type="radio" name="color-option" id="color-fixed" checked>
+                    <label for="color-fixed">Full color</label>
+                </div>
+                <div class="radio-selection">
+                    <input type="radio" name="color-option" id="color-increasing">
+                    <label for="color-increasing">Increasing color</label>
+                </div>
+                <div class="radio-selection">
+                    <input type="radio" name="color-option" id="color-random">
+                    <label for="color-random">Random color</label>
+                </div>
             </fieldset>
+            <div class="arrow">></div>
         </div>
         <div class="grid"></div>
     </div>
